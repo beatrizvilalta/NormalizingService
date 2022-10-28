@@ -4,14 +4,14 @@ import java.util.Arrays;
 
 public class LevenshteinDistanceUtil {
 
-    public static int findLevenshteinDistance(String str1, String str2) {
-        String str1LowerCase = str1.toLowerCase();
-        String str2LowerCase = str2.toLowerCase();
-        int[][] matrix = new int[str1.length() + 1][str2.length() + 1];
+    public static int findLevenshteinDistance(String inputString, String referenceString) {
+        String str1LowerCase = inputString.toLowerCase();
+        String str2LowerCase = referenceString.toLowerCase();
+        int[][] matrix = new int[inputString.length() + 1][referenceString.length() + 1];
 
-        for (int i = 0; i <= str1.length(); i++)
+        for (int i = 0; i <= inputString.length(); i++)
         {
-            for (int j = 0; j <= str2.length(); j++) {
+            for (int j = 0; j <= referenceString.length(); j++) {
                 if (i == 0) {
                     matrix[i][j] = j;
                 }
@@ -30,13 +30,14 @@ public class LevenshteinDistanceUtil {
             }
         }
 
-        return matrix[str1.length()][str2.length()];
+        return matrix[inputString.length()][referenceString.length()];
         }
-        static int numberOfReplacements(char c1, char c2) {
+
+        private static int numberOfReplacements(char c1, char c2) {
             return c1 == c2 ? 0 : 1;
         }
 
-        static int minimumEdits(int[] numbers) {
+        private static int minimumEdits(int[] numbers) {
             return Arrays.stream(numbers).min().orElse(
                     Integer.MAX_VALUE);
         }

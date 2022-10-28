@@ -1,4 +1,4 @@
-package test.java.com;
+package test.java.com.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
