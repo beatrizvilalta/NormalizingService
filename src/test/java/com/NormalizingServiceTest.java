@@ -1,16 +1,18 @@
 package test.java.com;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import main.java.com.service.NormalizingService;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 public class NormalizingServiceTest {
+
+    private final NormalizingService normalizingService = new NormalizingService();
 
     @Test
     void shouldNormalizeTitleWhenReceivingEngineer() {
         String expectedResult = "Software Engineer";
-        String actualResult = NormalizingService.normalizeTitle("Java Engineer");
+        String actualResult = normalizingService.normalizeTitle("Java Engineer");
 
         assertEquals(expectedResult, actualResult);
     }
@@ -18,7 +20,7 @@ public class NormalizingServiceTest {
     @Test
     void shouldNormalizeTitleWhenReceivingArchitect() {
         String expectedResult = "Architect";
-        String actualResult = NormalizingService.normalizeTitle("Mobile Architect");
+        String actualResult = normalizingService.normalizeTitle("Mobile Architect");
 
         assertEquals(expectedResult, actualResult);
     }
@@ -26,7 +28,15 @@ public class NormalizingServiceTest {
     @Test
     void shouldNormalizeTitleWhenReceivingAccountant() {
         String expectedResult = "Accountant";
-        String actualResult = NormalizingService.normalizeTitle("Chief Accountant");
+        String actualResult = normalizingService.normalizeTitle("Chief Accountant");
+
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    void shouldNormalizeTitleWhenReceivingQuantitySurveyor() {
+        String expectedResult = "Quantity Surveyor";
+        String actualResult = normalizingService.normalizeTitle("Junior Quantity Surveyor");
 
         assertEquals(expectedResult, actualResult);
     }
@@ -34,39 +44,22 @@ public class NormalizingServiceTest {
     @Test
     void shouldNormalizeTitleWhenReceivingTitleWithMinorTypo() {
         String expectedResult = "Accountant";
-        String actualResult = NormalizingService.normalizeTitle("Chief Acccountant");
+        String actualResult = normalizingService.normalizeTitle("Chief Acccountant");
 
         assertEquals(expectedResult, actualResult);
     }
 
-    //Given the job title isn't inside the scope of Accountant, Architect, Software Engineer and Quantity surveyor,
-    //When the User enters its job title that is not inside the scope
-    //Then return the original string inserted byt the user
+    /**
+        Given the job title isn't inside the scope of Accountant, Architect, Software Engineer and Quantity surveyor,
+        When the User enters its job title that is not inside the scope
+        Then return the original string inserted byt the user
+    */
+
     @Test
     void shouldNotNormalizeTitleWhenReceivingOtherJobTitle() {
         String expectedResult = "Teacher";
-        String actualResult = NormalizingService.normalizeTitle("Teacher");
+        String actualResult = normalizingService.normalizeTitle("Teacher");
 
         assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    void shouldReturnTrueWhenIsInsideQualityScore() {
-        boolean actualResult = NormalizingService.isInsideQualityScore("Engeneer", "Engineer");
-
-        assertTrue(actualResult);
-    }
-
-    @Test
-    void shouldReturnFalseWhenIsNotInsideQualityScore() {
-        boolean actualResult = NormalizingService.isInsideQualityScore("Ingenier", "Engineer");
-
-        assertFalse(actualResult);
-    }
-
-    @Test
-    void shouldGetNormalizedLastWordWhenItsInsideQualityScore() {
-        String expectResult = "Engineer";
-
     }
 }
