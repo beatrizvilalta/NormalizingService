@@ -11,9 +11,10 @@ public class Main {
 
         System.out.println(service.normalizeTitle("Java engineer"));
         System.out.println(service.normalizeTitle("Java enginer"));
-        System.out.println(service.normalizeTitle("teacher"));
-
-        System.out.println(LevenshteinDistanceUtil.findLevenshteinDistance("alo", "ola"));
+        System.out.println(service.normalizeTitle("Teacher"));
+        System.out.println(service.normalizeTitle("Chief Accountant"));
+        System.out.println(service.normalizeTitle("Cloud Architect"));
+        System.out.println(service.normalizeTitle("Junior Quantity Surveyor"));
 
     }
 }
