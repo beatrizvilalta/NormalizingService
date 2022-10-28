@@ -4,7 +4,7 @@
 
 This project is made to Transform Job Titles into a Normalized version of them.
 
-For it to work it is necessary to instantiate the NormalizeService, so that we can use the normalizeTitle() method with the disired job title to normalize
+For it to work it is necessary to instantiate the NormalizeService, so that we can use the `normalizeTitle()` method with the disired job title to normalize
 
 ```
 NormalizingService service = new NormalizingService();
